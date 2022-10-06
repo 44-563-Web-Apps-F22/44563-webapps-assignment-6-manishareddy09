@@ -8,66 +8,64 @@
 <h2>Manisha Reddy Arragari computes discounts</h2>
 
 <form>
-    <label for="form1_age">Enter base amount</label>
-    <input type ="number" id="form1_age" name="form1_age" value=20> <br>
+    <label for="base_amount">Enter base amount </label>
+    <input type ="number" id="base_amount" name="base_amount" value=20> <br>
 
-    <label for="form1_nick">Enter the discount percentage</label>
-    <input type ="number" id="form1_nick" name="form1_nick" value=10 autofocus> <br>
+    <label for="discount_amount">Enter the discount percentage</label>
+    <input type ="number" id="discount_amount" name="discount_amount" value=10> <br>
 
     <input type="button" onclick="discount()" value="Apply Discount">
+    <br>
 </form>
 
-<p id="result">Discount will appear here</p>
-<form>
-    <input onclick="chooseOp()" type="radio" id="rg1_red" name="color" value="times"   
-      checked >
-    <label for="rg1_red">*</label></br>
-  
-    <input  onclick="chooseOp()" type="radio" id="rg1_blue" name="color" 
-       value="divide">
-    <label for="rg1_blue">/</label></br>
-  
-    <input  onclick="chooseOp()" type="radio" id="rg1_green" name="color"   
-       value="exponent">
-    <label for="rg1_green">**</label></br>
 
-    <input type="button" onclick="chooseOp()" value="Get values from radio group">
-  </form>
-  <p id="output">This text will be replaced </p>
+<p id="result">Result is displaced here </p>
+<br>
+<form>
+    <input type="radio" id="multiply" name="arithmetic" value="times" onclick="chooseOp()" checked >
+    <label for="multiply">*</label></br>
+  
+    <input type="radio" id="divide" name="arithmetic" onclick="chooseOp()" value="divide">
+    <label for="divide">/</label></br>
+  
+    <input type="radio" id="exponential" name="arithmetic" onclick="chooseOp()" value="exponent">
+    <label for="exponential">**</label></br>
+</form>
+  <br>
+  <p id="result1">Calculations are displayed here</p>
+
 <script> 
-    function chooseOp() {
-        base = document.getElementById("form1_age").value
-        discount = document.getElementById("form1_nick").value
-        cheese = document.getElementById("rg1_brown").checked
-        olives = document.getElementById("rg1_red").checked
-        onions = document.getElementById("rg1_green").checked
-        
-        
-        out = document.getElementById("output")
-        if(cheese==true){
-            out.innerHTML =base*discount
-        }
-        if(olives==true){
-            out.innerHTML=base/discount
-        }
-        if(onions==true){
-            out.innerHTML=base**discount
-        }
-    
-        
+function discount(){
+    let base_value=document.getElementById("base_amount").value;
+    let discount_value=document.getElementById("discount_amount").value;
+    out=document.getElementById("result");
+    let result="";
+    let discountedAmount=base_value-base_value*discount_value/100;
+    for(i=1;i<=5;i++){
+
+        result=result+discountedAmount*i+" ";
     }
-    function discount() {
-    console.log("Getting input")
-    base = document.getElementById("form1_age").value
-    discount = document.getElementById("form1_nick").value
-    let result1="Discounted amounts for base "+base+" are ";
-    for(i=1; i<6 ; i++){
-        result1=result1+((i*base)-(i*base*discount)/100)+" ";
-    }
-    out = document.getElementById("result")
-    out.innerHTML = result1
+    out.innerHTML = "Discounted amounts for base "+base_value+" are "+result;
 }
- </script>
+
+function chooseOp(){
+    let base_value=document.getElementById("base_amount").value;
+    let discount_value=document.getElementById("discount_amount").value;
+    out=document.getElementById("result1");
+    amount = "";
+    if (document.getElementById("multiply").checked == true) {
+        result = +base_value * discount_value
+        amount = "Multiplication of " + base_value + " and " + discount_value + " is " + result
+    } else if (document.getElementById("divide").checked == true) {
+        result = base_value / discount_value
+        amount = "Division of " + base_value + " and " + discount_value + " is " + result
+    } else if (document.getElementById("exponential").checked == true) {
+        result = base_value ** discount_value
+        amount = "Exponent of " + base_value + " and " + discount_value + " is " + result
+    } 
+    out.innerHTML = amount 
+}
+</script>
 
 </body>
 </html> 
