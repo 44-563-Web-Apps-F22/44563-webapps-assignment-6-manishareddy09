@@ -6,46 +6,59 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_age">“Travel by Air” </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=True> <br>
+  <input type="checkbox" id="air" name="vacation1" value="True" >
+  <label for="air">Travel by Air</label></br>
 
-    <label for="form1_nick">“Domestic”</label>
-    <input type ="text" id="form1_nick" name="form1_nick" value=True autofocus> <br>
+  <input type="checkbox" id="domestic" name="vacation2" value="true">
+  <label for="domestic">Domestic</label></br>
 
-    
-  <label for="cb1_cheese">“Resort”</label></br>
-  <input type="checkbox" id="cb1_cheese" name="topping1" value=False checked>
+  <input type="checkbox" id="resort" name="vacation3" value="False">
+  <label for="resort">Resort</label></br>
 
-    <input type="button" onclick="selectVacation()" value="Select a vacation">
+  <input type="button" onclick="selectVacation()" value="Select a vacation">
 </form>
+<p id="result">Vacation result is stored </p>
 <form>
-    <label for="city">“Enter a city”</label>
-    <input type ="text" id="city" name="city" min=10 max=50 step=2 value="city"> <br>
+  <label for="city_name">Enter a city </label>
+  <input type ="text" id="city_name" name="city_name" value="city" autofocus> <br>
 
-    <label for="price">“Enter price”</label>
-    <input type ="text" id="price" name="price" value=True autofocus> <br>
+  <label for="price">Enter price </label>
+  <input type ="text" id="price" name="price" autofocus> <br>
 
-    <input type="button" onclick=updateVacation() value="Update the vacation">
+  <input type="button" onclick="updateVacation()" value="Update the vacation">
 </form>
-
-<p id="result">This text will be replaced </p>
 
 <script> 
-let my_vacation=""
- function selectVacation() {
-        console.log("Getting input")
-        air = document.getElementById("form1_age").checked
-        domestic = document.getElementById("form1_nick").checked
-        resort = document.getElementById("cb1_cheese").checked
- }
- function updateVacation() {
-    air = document.getElementById("city").checked
-    domestic = document.getElementById("price").checked
-    my_vacation=city
- }
-    
+var my_vacation = {};
+function selectVacation(){
+  my_vacation = {};
+  out = document.getElementById("result")
+  if(document.getElementById("air").checked==true)
+      my_vacation["air"]=true;
+  else
+      my_vacation["air"]=false;
+      if(document.getElementById("domestic").checked==true)
+          my_vacation["domestic"]=true;
+  else
+      my_vacation["domestic"]=false;
+      if(document.getElementById("resort").checked==true)
+      my_vacation["resort"]=true;
+  else{
+      my_vacation["resort"]=false;
+  }  
+out.innerHTML=JSON.stringify(my_vacation);
+}
 
- </script>
+
+function updateVacation(){
+  out = document.getElementById("result")
+  name = document.getElementById("city_name").value
+  city_price = document.getElementById("price").value
+  my_vacation["city_name"] = name
+  my_vacation["price"] = city_price;
+  out.innerHTML=JSON.stringify(my_vacation);
+}
+</script>
 
 </body>
 </html> 
