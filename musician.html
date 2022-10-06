@@ -25,6 +25,7 @@
 
 var correct = 0;
 var wrong = 0;
+count=0;
 
 function checkGuess(){
     console.log("Getting form values")
@@ -38,9 +39,20 @@ function checkGuess(){
     } else{
         wrong=wrong+1
         document.getElementById("result").innerHTML="Wrong "+wrong;
+        count++;
         alert("Wrong Musician");
+        if(count>=3){
+    if(wrong>=3){
+        gameover()
     }
 }
+    }
+    result.innerHTML="Correct guess : "+correct+" Wrong guess : "+wrong
+}
+function gameover(){
+    alert("Sorry,gameover")
+}
+
 </script>
 <div class="container">
     <img id="picture" src="Anoplura.jpg" alt="Anoplura insect" width="100px" height="100px" onclick="swapImage()">
@@ -65,6 +77,10 @@ function checkGuess(){
                 break;
         }
     }
+    
+
+    
 </script>
+
 </body>
 </html> 
