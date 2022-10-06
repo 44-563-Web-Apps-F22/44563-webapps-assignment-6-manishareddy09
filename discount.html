@@ -8,34 +8,66 @@
 <h2>Manisha Reddy Arragari computes discounts</h2>
 
 <form>
-    <label for="form1_baseamt">Enter base amount</label>
-    <input type ="number" id="form1_baseamt" name="form1_baseamt" value=20> <br>
+    <label for="form1_age">Enter base amount</label>
+    <input type ="number" id="form1_age" name="form1_age" value=20> <br>
 
-    <label for="form1_dsc">Enter the discount percentage</label>
-    <input type ="number" id="form1_dsc" name="form1_dsc" value=10 autofocus> <br>
+    <label for="form1_nick">Enter the discount percentage</label>
+    <input type ="number" id="form1_nick" name="form1_nick" value=10 autofocus> <br>
 
     <input type="button" onclick="discount()" value="Apply Discount">
 </form>
 
 <p id="result">Discount will appear here</p>
+<form>
+    <input onclick="chooseOp()" type="radio" id="rg1_red" name="color" value="times"   
+      checked >
+    <label for="rg1_red">*</label></br>
+  
+    <input  onclick="chooseOp()" type="radio" id="rg1_blue" name="color" 
+       value="divide">
+    <label for="rg1_blue">/</label></br>
+  
+    <input  onclick="chooseOp()" type="radio" id="rg1_green" name="color"   
+       value="exponent">
+    <label for="rg1_green">**</label></br>
 
+    <input type="button" onclick="chooseOp()" value="Get values from radio group">
+  </form>
+  <p id="output">This text will be replaced </p>
 <script> 
-
-function discount(){
-   
-    amount = document.getElementById("form1_baseamt").value
-    disc= document.getElementById("form1_dsc").value
-    result="Discounted amounts for base "+amount+" are "
-    for(let i=1;i<6;i++){
-        max=i*amount
-        total=max*(1-(disc/100))
-        result+= total+" "
-
+    function chooseOp() {
+        base = document.getElementById("form1_age").value
+        discount = document.getElementById("form1_nick").value
+        cheese = document.getElementById("rg1_brown").checked
+        olives = document.getElementById("rg1_red").checked
+        onions = document.getElementById("rg1_green").checked
+        
+        
+        out = document.getElementById("output")
+        if(cheese==true){
+            out.innerHTML =base*discount
+        }
+        if(olives==true){
+            out.innerHTML=base/discount
+        }
+        if(onions==true){
+            out.innerHTML=base**discount
+        }
+    
+        
     }
-    replacetxt=document.getElementById("result");
-    replacetxt.innerHTML=result;
+    function discount() {
+    console.log("Getting input")
+    base = document.getElementById("form1_age").value
+    discount = document.getElementById("form1_nick").value
+    let result1="Discounted amounts for base "+base+" are ";
+    for(i=1; i<6 ; i++){
+        result1=result1+((i*base)-(i*base*discount)/100)+" ";
+    }
+    out = document.getElementById("result")
+    out.innerHTML = result1
 }
-</script>
+ </script>
 
 </body>
 </html> 

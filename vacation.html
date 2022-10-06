@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ <head>Vacation Page</head>
+<body>
+<h1>Manisha Reddy Arragari selects a vacation</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="form1_age">“Travel by Air” </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=True> <br>
+
+    <label for="form1_nick">“Domestic”</label>
+    <input type ="text" id="form1_nick" name="form1_nick" value=True autofocus> <br>
+
+    
+  <label for="cb1_cheese">“Resort”</label></br>
+  <input type="checkbox" id="cb1_cheese" name="topping1" value=False checked>
+
+    <input type="button" onclick="selectVacation()" value="Select a vacation">
+</form>
+<form>
+    <label for="city">“Enter a city”</label>
+    <input type ="text" id="city" name="city" min=10 max=50 step=2 value="city"> <br>
+
+    <label for="price">“Enter price”</label>
+    <input type ="text" id="price" name="price" value=True autofocus> <br>
+
+    <input type="button" onclick=updateVacation() value="Update the vacation">
+</form>
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+let my_vacation=""
+ function selectVacation() {
+        console.log("Getting input")
+        air = document.getElementById("form1_age").checked
+        domestic = document.getElementById("form1_nick").checked
+        resort = document.getElementById("cb1_cheese").checked
+ }
+ function updateVacation() {
+    air = document.getElementById("city").checked
+    domestic = document.getElementById("price").checked
+    my_vacation=city
+ }
+    
+
+ </script>
+
+</body>
+</html> 
